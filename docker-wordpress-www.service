@@ -1,0 +1,30 @@
+[Unit]
+Description=Docker compose para partidopirata.org
+After=docker.service
+Requires=docker.service
+BindsTo=docker.service
+ 
+[Service]
+User=wordpress
+Group=docker
+
+TimeoutStartSec=0
+TimeoutStopSec=30
+Restart=always
+RestartSec=10
+ 
+WorkingDirectory=/home/wordpress/www/
+
+## Comentei porque acho que não precisa
+#ExecStartPre=-/usr/local/bin/docker-compose -f docker-compose.yml kill $APP
+#ExecStartPre=-/usr/local/bin/docker-compose -f docker-compose.yml rm $APP
+#ExecStartPre=-/usr/local/bin/docker-compose -f docker-compose.yml rm -f $APP
+ 
+ExecStart=/usr/local/bin/docker-compose -f docker-compose.yml up --force-recreate --no-deps $APP
+ 
+ExecStop=/usr/local/bin/docker-compose -f docker-compose.yml stop $APP
+ 
+NotifyAccess=all
+ 
+[Install]
+WantedBy=multi-user.target
