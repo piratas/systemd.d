@@ -12,7 +12,7 @@ Presumindo que o sistema é Debian
 
 ```bash
 $ git clone https://github.com/piratas/systemd.d.git
-# rsync systemd.d/*.service /lib/systemd/system/
+# rsync -avhP systemd.d/*.service /lib/systemd/system/
 ```
 
 ### Habilitar serviço na inicialização do sistema
