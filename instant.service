@@ -6,8 +6,7 @@ After=network.target
 Type=simple
 User=www-data
 Group=www-data
-WorkingDirectory=git/instant.io/
-ExecStart=/usr/bin/npm start
+ExecStart=/bin/bash /var/www/git/instant.io/systemd.bash
 
 [Install]
 WantedBy=multi-user.target
