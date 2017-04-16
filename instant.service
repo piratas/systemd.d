@@ -1,0 +1,13 @@
+[Unit]
+Description=instant.io as a daemon
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=git/instant.io/
+ExecStart=/usr/bin/npm start
+
+[Install]
+WantedBy=multi-user.target
