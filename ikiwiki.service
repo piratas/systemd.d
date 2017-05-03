@@ -1,0 +1,12 @@
+[Unit]
+Description=Ikiwiki fcgi socket wrap
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+ExecStart=/usr/bin/spawn-fcgi -s /tmp/fcgi.socket -n -- /usr/sbin/fcgiwrap
+
+[Install]
+WantedBy=multi-user.target
