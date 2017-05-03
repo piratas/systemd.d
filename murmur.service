@@ -1,0 +1,14 @@
+[Unit]
+Description=mumble server
+After=network.target tor.service
+PartOf=tor.service
+
+[Service]
+User=root
+Group=root
+ExecStart=/usr/sbin/murmurd -ini /etc/mumble-server.ini
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
